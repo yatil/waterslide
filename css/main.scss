@@ -1,0 +1,124 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #ddd;
+  margin: 0;
+  padding: 0;
+  font-family: Sybilla Pro, sans-serif;
+}
+
+.deem {
+  font-weight: 100;
+}
+
+.navbar {
+  background-color: #000;
+  box-shadow: 0 1vh 10px rgba(0,0,0,.5);
+  a {
+    color: #fff;
+    display: block;
+    padding: .5vh;
+    text-decoration: none;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    li:first-child {
+      flex: 1;
+    }
+    .pagination {
+      border-left: 1px solid #fff;
+    }
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.slide {
+  height: 85vh;
+  padding: 3vh;
+  background: #9A0000;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 5vh;
+  h1 {
+    font-weight: 900;
+    line-height: 1.3;
+    font-size: 10vh;
+  }
+}
+
+.sub {
+  font-size: .5em;
+  display:block;
+}
+
+.slide.shout {
+  h1 {
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1.3;
+    font-size: 15vh;
+    text-align: center;
+  }
+  p, ul {
+    font-size: 5vh;
+  }
+}
+
+.slide.title {
+  h1 {
+    text-shadow:   1px  1px 0px #000,
+                   2px  2px 0px #000,
+                   3px  3px 0px #000,
+                   4px  4px 0px #000,
+                   5px  5px 0px #000,
+                   6px  6px 0px #000,
+                   7px  7px 0px #000,
+                   8px  8px 0px #000,
+                   9px  9px 0px #000,
+                  10px 10px 0px #000,
+                  11px 11px 0px #000,
+                  12px 12px 0px #000,
+                  13px 13px 0px #000,
+                  14px 14px 0px #000,
+                  15px 15px 0px #000,
+                  16px 16px 0px #000,
+                  17px 17px 0px #000,
+                  18px 18px 0px #000,
+                  19px 19px 0px #000,
+                  20px 20px 0px #000;
+  }
+}
+
+.i {
+  box-sizing: content-box;
+  stroke: currentColor;
+  stroke-width: 10.9375%;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  width: 1em;
+  height: 1em;
+  margin: 0.4em;
+  vertical-align: middle;
+  display:inline-block;
+}
+
+svg, svg symbol {
+  overflow: visible;
+}

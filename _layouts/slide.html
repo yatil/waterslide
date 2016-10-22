@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article>
+  <div class="slide {{page.class}}">
+    <div>
+      {% if page.slide_title %}
+      <h1 class="title">{{ page.slide_title }}</h1>
+      {% else %}
+      <h1 class="title">{{ page.title }}</h1>
+      {% endif %}
+      {% assign split_content = content | split: "<!-- more -->" %}
+      {% if split_content | size > 1 %}
+        {{ content | split: "<!-- more -->" | first }}
+      {% endif%}
+    </div>
+  </div>
+  {% include navbar.html %}
+  <div class="content">
+    {{ content | split: "<!-- more -->" | last }}
+  </div>
+
+</article>

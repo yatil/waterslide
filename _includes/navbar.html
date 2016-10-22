@@ -1,0 +1,24 @@
+{% capture the_collection %}{{page.collection}}{% endcapture %}
+  {% if page.collection %}
+    {% assign  document = site[the_collection]  %}
+  {% endif %}
+{% for links in document  %}
+  {% if links.title == page.title %}
+    {% unless forloop.first %}
+      {% assign prevurl = prev.url %}
+    {% endunless %}
+    {% unless forloop.last %}
+      {% assign next = document[forloop.index] %}
+      {% assign nexturl = next.url %}
+    {% endunless %}
+  {% endif %}
+  {% assign prev = links %}
+{% endfor %}
+<nav class="navbar">
+  <ul>
+    <li><a href="{{ site.baseurl }}/{{page.collection}}/{{page.slug}}">{% include icon.html use="bookmark" title="Permalink"%} {{ site.title }}/{{page.collection | slugify}}/{{page.slug}}</a></li>
+    <!--<li>{{site.collections}}</li>-->
+    <li class="pagination"><a href="{{prevurl}}">{% include icon.html use="chevron-left" title="Previous"%}</a></li>
+    <li class="pagination"><a href="{{nexturl}}">{% include icon.html use="chevron-right" title="Next"%}</a></li>
+  </ul>
+</nav>
