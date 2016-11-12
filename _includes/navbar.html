@@ -3,7 +3,7 @@
     {% assign  document = site[the_collection]  %}
   {% endif %}
 {% for links in document  %}
-  {% if links.title == page.title %}
+  {% if links.slug == page.slug %}
     {% unless forloop.first %}
       {% assign prevurl = prev.url %}
     {% endunless %}
@@ -16,9 +16,23 @@
 {% endfor %}
 <nav class="navbar">
   <ul>
-    <li><a href="{{ site.baseurl }}/{{page.collection}}/{{page.slug}}">{% include icon.html use="bookmark" title="Permalink"%} {{ site.title }}/{{page.collection | slugify}}/{{page.slug}}</a></li>
-    <!--<li>{{site.collections}}</li>-->
-    <li class="pagination"><a href="{{prevurl}}">{% include icon.html use="chevron-left" title="Previous"%}</a></li>
-    <li class="pagination"><a href="{{nexturl}}">{% include icon.html use="chevron-right" title="Next"%}</a></li>
+    {% assign split_content = content | split: "<!-- more -->" %}
+    {% assign spcosi = split_content | size %}
+    {{spcosi}}
+    {% if spcosi > 1 %}
+    {% assign split_content_content = split_content | last | strip %}
+    {% if split_content_content == "" %}
+    <li aria-hidden="true"></li>
+    {% else %}
+    <li class="down"><a href="#content" class="more-info">
+      <span>{% include icon.html use="arrow-bottom" %} Scroll for more information {% include icon.html use="arrow-bottom" %}</span>
+    </a></li>
+    {% endif %}
+    {% else %}
+    <li aria-hidden="true"></li>
+    {% endif %}
+    <li><a href="{{ site.baseurl }}/{{page.collection}}/{{page.slug}}">{% include icon.html use="bookmark" title="Permalink"%}{% comment %} {{ site.title }}/{{page.collection | slugify}}/{{page.slug}}{% endcomment %}</a></li>
+    <li class="pagination"><a id="prevbtn" href="{{prevurl}}">{% include icon.html use="chevron-left" title="Previous"%}</a></li>
+    <li class="pagination"><a id="nextbtn" href="{{nexturl}}">{% include icon.html use="chevron-right" title="Next"%}</a></li>
   </ul>
 </nav>
