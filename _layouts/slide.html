@@ -2,22 +2,29 @@
 layout: default
 ---
 <article>
-  <div class="slide {{page.class}}">
+  <div class="slide {{page.class}}{% if page.background %} background{% endif %}" {% if page.background %}style="background-image: url({{page.background}});"{% endif %}>
     <div>
       {% if page.slide_title %}
-      <h1 class="title">{{ page.slide_title }}</h1>
+      <h1 class="title">{% if page.bignum %}<strong class="bignum">{{page.bignum}}</strong> {% endif %}{{ page.slide_title }}</h1>
       {% else %}
-      <h1 class="title">{{ page.title }}</h1>
+      <h1 class="title">{% if page.bignum %}<strong class="bignum">{{page.bignum}}</strong> {% endif %}{{ page.title }}</h1>
       {% endif %}
       {% assign split_content = content | split: "<!-- more -->" %}
       {% if split_content | size > 1 %}
-        {{ content | split: "<!-- more -->" | first }}
+        {{ split_content | first }}
       {% endif%}
     </div>
   </div>
+  {% assign split_content = content | split: "<!-- more -->" %}
+  {% assign spcosi = split_content | size %}
   {% include navbar.html %}
-  <div class="content">
-    {{ content | split: "<!-- more -->" | last }}
+  {% if spcosi > 1 %}
+  {% assign split_content_content = split_content | last | strip %}
+  {% unless split_content_content == "" %}
+  <div class="content" id="content">
+    {{ split_content_content }}
   </div>
+  {% endunless %}
+  {% endif %}
 
 </article>
