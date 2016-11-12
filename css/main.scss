@@ -2,8 +2,66 @@
 # Only the main Sass file needs front matter (the dashes are enough)
 ---
 
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap; /* 1 */
+}
+
+/*
+ * Extends the .visuallyhidden class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.visuallyhidden.focusable:active,
+.visuallyhidden.focusable:focus {
+    clip: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    position: static;
+    width: auto;
+    white-space: inherit;
+}
+
 * {
   box-sizing: border-box;
+}
+
+abbr {
+  border-bottom: 1px dashed currentColor;
+  @supports (text-decoration-style: dotted) {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    border-bottom: none;
+  }
+}
+
+.amp {
+  font-weight: 100;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  &::before, &::after {
+    flex: 1;
+    height: 1vh;
+    content: '';
+    background-color: currentColor;
+  }
+  &::before { margin-right: 3vw; }
+  &::after  { margin-left:  3vw; }
+  &.inline {
+    display: inline;
+    &::before { display: none; }
+    &::after  { display: none; }
+  }
 }
 
 body {
@@ -11,31 +69,85 @@ body {
   margin: 0;
   padding: 0;
   font-family: Sybilla Pro, sans-serif;
+  scroll-behavior: smooth;
 }
 
 .deem {
   font-weight: 100;
 }
 
+.bignum {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 10vh;
+  width: 1.25em;
+  height: 1.25em;
+  background-color: #000;
+  line-height: 100%;
+  border-radius: 100%;
+  padding-top:.1em;
+  text-shadow: none;
+  font-style: normal;
+  box-shadow:    1px  1px 0px #fff,
+                 2px  2px 0px #fff,
+                 3px  3px 0px #fff,
+                 4px  4px 0px #fff,
+                 5px  5px 0px #fff,
+                 6px  6px 0px #fff,
+                 7px  7px 0px #fff,
+                 8px  8px 0px #fff,
+                 9px  9px 0px #fff,
+                10px 10px 0px #fff,
+                11px 11px 0px #fff,
+                12px 12px 0px #fff,
+                13px 13px 0px #fff,
+                14px 14px 0px #fff,
+                15px 15px 0px #fff,
+                16px 16px 0px #fff,
+                17px 17px 0px #fff,
+                18px 18px 0px #fff,
+                19px 19px 0px #fff,
+                20px 20px 0px #fff;
+}
+
 .navbar {
   background-color: #000;
   box-shadow: 0 1vh 10px rgba(0,0,0,.5);
   a {
-    color: #fff;
+    color: #555;
     display: block;
     padding: .5vh;
     text-decoration: none;
+    display: flex;
+    width: 100%;
+    justify-content: stretch;
+    align-items: center;
+    &:hover, &:focus {
+      background-color: #333;
+    }
   }
   ul {
+    min-height:5vh;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: stretch;
+    align-items: stretch;
     list-style: none;
+    li {
+      display: flex;
+      justify-content: stretch;
+      align-items: stretch;
+    }
     li:first-child {
       flex: 1;
     }
     .pagination {
       border-left: 1px solid #fff;
+      a {
+        color: #fff;
+      }
     }
   }
 }
@@ -45,8 +157,24 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+.next {
+  opacity: 0.01;
+  transition: opacity 200ms linear;
+  &.played {
+    opacity: 1;
+  }
+  &.from-left {
+    opacity: 1;
+    transition: margin-left 500ms linear;
+    margin-left: -100vw;
+    &.played {
+      margin-left: 0;
+    }
+  }
+}
+
 .slide {
-  height: 85vh;
+  min-height: 95vh;
   padding: 3vh;
   background: #9A0000;
   color: #fff;
@@ -55,10 +183,25 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   font-size: 5vh;
+  >div {
+    max-width: 90%;
+  }
   h1 {
-    font-weight: 900;
-    line-height: 1.3;
+    font-weight: 700;
+    line-height: 1.2;
     font-size: 10vh;
+  }
+  ul {
+    list-style-type: square;
+    ul {
+      list-style-type: disc;
+    }
+  }
+  a {
+    color: #fff;
+  }
+  blockquote {
+    font-style: italic;
   }
 }
 
@@ -71,7 +214,6 @@ h1, h2, h3, h4, h5, h6 {
   h1 {
     font-weight: 900;
     font-style: italic;
-    line-height: 1.3;
     font-size: 15vh;
     text-align: center;
   }
@@ -105,6 +247,78 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.slide.large {
+  h1 {
+    font-size: 25vh;
+  }
+}
+
+.slide.allcaps {
+  h1 {
+    text-transform: uppercase;
+  }
+}
+
+.slide.hide-h1 {
+  h1 {
+    @extend .visuallyhidden;
+  }
+}
+
+.slide.full {
+  position: relative;
+  iframe, img, video {
+    position: absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    width: 100% !important;
+    height: 100% !important;
+  }
+}
+
+.slide.fire {
+  background-color: #222;
+  h1 {
+  color: rgb(255, 255, 255);
+  text-overflow: clip;
+  text-shadow: 0 0 20px rgb(254,252,201) , 10px -10px 30px rgb(254,236,133) , -20px -20px 40px rgb(255,174,52) , 20px -40px 50px rgb(236,118,12) , -20px -60px 60px rgb(205,70,6) , 0 -80px 70px rgb(151,55,22) , 10px -90px 80px rgb(69,27,14) ;
+  animation: flicker 3s infinite linear;
+  }
+}
+
+.slide.thin {
+  h1 {
+  font-weight: 100;
+  }
+}
+
+.slide.background {
+  background-size: cover;
+}
+
+/* GALLERY */
+
+.gallery {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    margin: 1vh;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  img {
+    height: 90%;
+  }
+}
+
+/* IMG STYLES, including SVG */
+
 .i {
   box-sizing: content-box;
   stroke: currentColor;
@@ -122,3 +336,198 @@ h1, h2, h3, h4, h5, h6 {
 svg, svg symbol {
   overflow: visible;
 }
+
+.pixelated {
+  image-rendering: -o-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
+img.white {
+  background-color: #fff;
+}
+
+img.rounded {
+  border-radius: 1.5vh;
+}
+
+img.shadowed {
+  box-shadow:    1px  1px 0px #000,
+                 2px  2px 0px #000,
+                 3px  3px 0px #000,
+                 4px  4px 0px #000,
+                 5px  5px 0px #000,
+                 6px  6px 0px #000,
+                 7px  7px 0px #000,
+                 8px  8px 0px #000,
+                 9px  9px 0px #000,
+                10px 10px 0px #000,
+                11px 11px 0px #000,
+                12px 12px 0px #000,
+                13px 13px 0px #000,
+                14px 14px 0px #000,
+                15px 15px 0px #000,
+                16px 16px 0px #000,
+                17px 17px 0px #000,
+                18px 18px 0px #000,
+                19px 19px 0px #000,
+                20px 20px 0px #000;
+}
+
+/* MORE INFO */
+
+.more-info {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 5vh;
+  color: #626262;
+}
+
+/* CONTENT */
+
+.content {
+  background-color: #fff;
+  padding: 1em 3vw;
+  margin: 1em auto;
+  max-width: 80%;
+  border: 1px solid #bbb;
+  a {
+    color: #000;
+  }
+}
+
+/* TABLE */
+table {
+  margin: 0 auto;
+  h1+& {
+    margin-top: 5vh;
+  }
+  &, td, th {
+    border: 3px solid #fff;
+    border-collapse: collapse;
+    font-weight: 400;
+  }
+  td, th {
+    text-align: left;
+    padding: .5vh 1vh;
+  }
+  th {
+    background-color: rgba(#fff, 1);
+    color: #000;
+    border-bottom-color: #000;
+  }
+  tbody tr:last-child th, thead th:last-child {
+      border-bottom-color: inherit;
+  }
+  td {
+    font-weight: 100;
+  }
+  .number {
+    text-align: right;
+  }
+}
+
+/* EMBEDS */
+
+.twitter-tweet-rendered {
+  transform-origin: 50% 0;
+  transform: scale(1.25);
+}
+
+/* Animations */
+
+@keyframes flicker {
+  from {
+    opacity: 0.9;
+  }
+  6% {
+    opacity: 1;
+  }
+  8% {
+    opacity: .8;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  11% {
+    opacity: 0.1;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  14% {
+    opacity: 0.9;
+  }
+  16% {
+    opacity: 0.75;
+  }
+  17% {
+    opacity: 0.60;
+  }
+  19% {
+    opacity: 0.80;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  24% {
+    opacity: 0.75;
+  }
+  26% {
+    opacity: 0.80;
+  }
+  28% {
+    opacity: 0.90;
+  }
+  38% {
+    opacity: 0.85;
+  }
+  40% {
+    opacity: 0.95;
+  }
+  42% {
+    opacity: 1;
+  }
+  44% {
+    opacity: 0.9;
+  }
+  46% {
+    opacity: 0.9;
+  }
+  56% {
+    opacity: 0.9;
+  }
+  58% {
+    opacity: 0.75;
+  }
+  60% {
+    opacity: 0.9;
+  }
+  68% {
+    opacity: 0.9;
+  }
+  70% {
+    opacity:1; /*peak*/
+  }
+  72% {
+    opacity: 0.9;
+  }
+  93% {
+    opacity: 0.9;
+  }
+  95% {
+    opacity:1; /*peak*/
+  }
+  97% {
+    opacity: 0.9;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+
+@import 'syntax-highlighting';
