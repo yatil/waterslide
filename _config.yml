@@ -20,6 +20,7 @@ excerpt_separator: "<!-- more -->"
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 
 kramdown:
   input: GFM
@@ -32,11 +33,24 @@ collections:
     conference_url: "http://accessinghigherground.org/"
     output: true
     layout: slide
-    permalink: /2016-ahg-simplify/:slug/
+    permalink: /2016/ahg/simplify/:slug/
+  2016_ahg_aaddd:
+    date: 2016-11-15
+    time: 13:30
+    conference: Accessing Higher Ground
+    conference_url: "http://accessinghigherground.org/"
+    output: true
+    layout: slide
+    permalink: /2016/ahg/aaddd/:slug/
 
 defaults:
   - scope:
       path: ""
       type: 2016_ahg_simplify
+    values:
+      layout: slide
+  - scope:
+      path: ""
+      type: 2016_ahg_aaddd
     values:
       layout: slide
