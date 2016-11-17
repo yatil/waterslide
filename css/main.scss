@@ -76,9 +76,13 @@ body {
   font-weight: 100;
 }
 
+.small {
+  font-size: 50%;
+}
+
 .bignum {
   display: block;
-  margin: 0 auto;
+  margin: 0 auto .2em 0;
   text-align: center;
   font-size: 10vh;
   width: 1.25em;
@@ -202,6 +206,17 @@ h1, h2, h3, h4, h5, h6 {
   }
   blockquote {
     font-style: italic;
+    p:first-child {
+      text-indent: -.35em;
+      &::before {
+        content: "“";
+      }
+    }
+    p:last-child {
+      &::after {
+        content: "”";
+      }
+    }
   }
 }
 
@@ -244,6 +259,29 @@ h1, h2, h3, h4, h5, h6 {
                   18px 18px 0px #000,
                   19px 19px 0px #000,
                   20px 20px 0px #000;
+    em {
+      color: #000;
+      text-shadow:   1px  1px 0px #fff,
+                   2px  2px 0px #fff,
+                   3px  3px 0px #fff,
+                   4px  4px 0px #fff,
+                   5px  5px 0px #fff,
+                   6px  6px 0px #fff,
+                   7px  7px 0px #fff,
+                   8px  8px 0px #fff,
+                   9px  9px 0px #fff,
+                  10px 10px 0px #fff,
+                  11px 11px 0px #fff,
+                  12px 12px 0px #fff,
+                  13px 13px 0px #fff,
+                  14px 14px 0px #fff,
+                  15px 15px 0px #fff,
+                  16px 16px 0px #fff,
+                  17px 17px 0px #fff,
+                  18px 18px 0px #fff,
+                  19px 19px 0px #fff,
+                  20px 20px 0px #fff;
+    }
   }
 }
 
@@ -275,6 +313,7 @@ h1, h2, h3, h4, h5, h6 {
     right:0;
     width: 100% !important;
     height: 100% !important;
+    overflow: scroll;
   }
 }
 
@@ -296,6 +335,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .slide.background {
   background-size: cover;
+}
+
+.slide.center {
+  text-align: center;
 }
 
 /* GALLERY */
