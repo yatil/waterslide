@@ -17,6 +17,12 @@ function next() {
     window.location.href = document.querySelector('#nextbtn').getAttribute('href');
   } else {
     nextels[0].classList.add('played');
+    var instep = document.querySelectorAll('.next[data-step="' + nextels[0].getAttribute('data-step') + '"]');
+    if(instep.length) {
+      for (var i = instep.length - 1; i >= 0; i--) {
+        instep[i].classList.add('played');
+      }
+    }
   }
 }
 
@@ -26,25 +32,33 @@ function prev() {
     window.location.href = document.querySelector('#prevbtn').getAttribute('href');
   } else {
     prevels[prevels.length-1].classList.remove('played');
+    var instep = document.querySelectorAll('.next[data-step="' + prevels[prevels.length-1].getAttribute('data-step') + '"]');
+    if(instep.length) {
+      for (var i = instep.length - 1; i >= 0; i--) {
+        instep[i].classList.remove('played');
+      }
+    }
   }
 }
 
 document.querySelector('body').addEventListener("keydown", function(event) {
-  switch (event.keyCode) {
-    case keys.right:
-    case keys.pgDwn:
-      next();
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
-      break;
-    case keys.left:
-    case keys.pgUp:
-      prev();
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
-      break;
+  if (!event.target.getAttribute('contenteditable')) {
+    switch (event.keyCode) {
+      case keys.right:
+      case keys.pgDwn:
+        next();
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+        break;
+      case keys.left:
+      case keys.pgUp:
+        prev();
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+        break;
+    }
   }
 });
 
