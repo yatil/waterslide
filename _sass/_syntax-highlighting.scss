@@ -2,11 +2,15 @@
  * Syntax highlighting styles
  */
 .highlight {
-    //background: #fff;
+    background: #fff;
+    border-radius: .35em;
+    border: .1em solid #000;
+    overflow-x: scroll;
     //@extend %vertical-rhythm;
 
     .highlighter-rouge & {
-      background: #000;
+      background: #fff;
+      color: #000;
       padding: .05em .1em .1em;
     }
 
