@@ -28,7 +28,7 @@ kramdown:
 collections:
   2016_ahg_simplify:
     date: 2016-11-15
-    time: 13:30
+    time: "13:30"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
@@ -36,12 +36,28 @@ collections:
     permalink: /2016/ahg/simplify/:slug/
   2016_ahg_aaddd:
     date: 2016-11-15
-    time: 13:30
+    time: "13:30"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
     layout: slide
     permalink: /2016/ahg/aaddd/:slug/
+  2016_ahg_semantic:
+    date: 2016-11-17
+    time: "8:00"
+    conference: Accessing Higher Ground
+    conference_url: "http://accessinghigherground.org/"
+    output: true
+    layout: slide
+    permalink: /2016/ahg/semantic/:slug/
+  2016_ahg_aria:
+    date: 2016-11-17
+    time: "16:00"
+    conference: Accessing Higher Ground
+    conference_url: "http://accessinghigherground.org/"
+    output: true
+    layout: slide
+    permalink: /2016/ahg/aria/:slug/
 
 defaults:
   - scope:
@@ -52,5 +68,15 @@ defaults:
   - scope:
       path: ""
       type: 2016_ahg_aaddd
+    values:
+      layout: slide
+  - scope:
+      path: ""
+      type: 2016_ahg_aria
+    values:
+      layout: slide
+  - scope:
+      path: ""
+      type: 2016_ahg_semantic
     values:
       layout: slide
