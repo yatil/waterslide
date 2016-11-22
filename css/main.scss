@@ -572,5 +572,58 @@ table {
   }
 }
 
+/* TALK LIST */
+
+.home {
+  margin: 3em;
+  h1 {
+    margin-bottom: 3em;
+  }
+}
+
+.talk-list {
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  list-style: none;
+  margin: -1em;
+  padding: 0;
+}
+
+.talk-list li {
+  display: flex;
+  align-items: stretch;
+  flex: 1 1 20em;
+  margin: 0;
+  padding: 1em;
+  > a {
+    flex: 1 1;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border: .25em solid #9A0000;
+    padding: .15em;
+    background: #9A0000;
+    color: #fff;
+    text-decoration: none;
+    &:hover, &:focus {
+      border: .25em solid #000;
+      h2 {
+        text-decoration: underline;
+      }
+    }
+    h2 {
+      margin: 0;
+      padding: 0;
+      font-size: 1.25em;
+      margin-bottom: .5em;
+    }
+    p {
+      border-top: 1px solid #fff;
+      margin: 0;
+    }
+  }
+}
 
 @import 'syntax-highlighting';
