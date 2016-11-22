@@ -587,7 +587,7 @@ table {
   justify-content: space-between;
   align-items: stretch;
   list-style: none;
-  margin: -1em;
+  margin: -.5em;
   padding: 0;
 }
 
@@ -596,19 +596,22 @@ table {
   align-items: stretch;
   flex: 1 1 20em;
   margin: 0;
-  padding: 1em;
+  padding: .5em;
   > a {
     flex: 1 1;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    border: .25em solid #9A0000;
-    padding: .15em;
+    border: .3em solid #9A0000;
+    padding: .5em;
     background: #9A0000;
     color: #fff;
     text-decoration: none;
     &:hover, &:focus {
-      border: .25em solid #000;
+      border-color: #000;
+      transition: all .2s linear;
+      box-shadow: 0 0 10px #000;
+      transform: scale(1.2) rotate(-2deg);
       h2 {
         text-decoration: underline;
       }
