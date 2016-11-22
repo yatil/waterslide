@@ -27,32 +27,32 @@ kramdown:
 
 collections:
   2016_ahg_simplify:
-    date: 2016-11-15
-    time: "13:30"
+    title: "Simplify your development life with tools, tests and procedures"
+    date: "2016-11-15 13:30"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
     layout: slide
     permalink: /2016/ahg/simplify/:slug/
   2016_ahg_aaddd:
-    date: 2016-11-15
-    time: "13:30"
+    title: "Advanced Accessibility: A Deep Dive for Developers"
+    date: "2016-11-15 09:00"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
     layout: slide
     permalink: /2016/ahg/aaddd/:slug/
   2016_ahg_semantic:
-    date: 2016-11-17
-    time: "8:00"
+    title: "Semantic Subtleties"
+    date: "2016-11-17 08:00"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
     layout: slide
     permalink: /2016/ahg/semantic/:slug/
   2016_ahg_aria:
-    date: 2016-11-17
-    time: "16:00"
+    title: "ARIA Serious?"
+    date: "2016-11-17 16:00"
     conference: Accessing Higher Ground
     conference_url: "http://accessinghigherground.org/"
     output: true
