@@ -31,7 +31,8 @@
     {% else %}
     <li aria-hidden="true"></li>
     {% endif %}
-    <li><a href="{{ site.baseurl }}/{{page.collection}}/{{page.slug}}">{% include icon.html use="bookmark" title="Permalink"%}{% comment %} {{ site.title }}/{{page.collection | slugify}}/{{page.slug}}{% endcomment %}</a></li>
+    <li><a href="/">{% include icon.html use="home" title="Home"%}</a></li>
+    <li><a href="{{page.url}}">{% include icon.html use="bookmark" title="Permalink"%}</a></li>
     <li class="pagination"><a id="prevbtn" href="{{prevurl}}">{% include icon.html use="chevron-left" title="Previous"%}</a></li>
     <li class="pagination"><a id="nextbtn" href="{{nexturl}}">{% include icon.html use="chevron-right" title="Next"%}</a></li>
   </ul>
